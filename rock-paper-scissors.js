@@ -60,7 +60,27 @@ const playRound = (humanChoice, computerChoice) => {
     }
 };
 
+// Play 5 rounds, display scores and declare winner
+const playGame = () => {
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+
+    console.log('Your Score: ', humanScore, ' - Computer Score: ', computerScore);
+
+    if (humanScore > computerScore) {
+        console.log('You win!');
+    } else if (humanScore < computerScore) {
+        console.log('Computer wins!');
+    } else {
+        console.log("It's a tie!");
+    }
+};
+
 // Test functions
 // console.log('Test getComputerChoice():', getComputerChoice());
 // console.log('Test getHumanChoice():', getHumanChoice()); 
 // playRound(getHumanChoice(), getComputerChoice());
+// playGame();
