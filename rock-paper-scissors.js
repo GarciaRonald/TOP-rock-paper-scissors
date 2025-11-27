@@ -14,8 +14,6 @@ const getComputerChoice = () => {
 // Human choice, return user input
 const getHumanChoice = () => prompt('Enter Rock, Paper or Scissors:', 'Rock');
 
-
-
 // Play 5 rounds, display scores and declare winner
 const playGame = () => {
     let humanScore = 0;
@@ -64,11 +62,9 @@ const playGame = () => {
         }
     };
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
+    for (let i = 1; i <= 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 
     console.log('Your Score: ', humanScore, ' - Computer Score: ', computerScore);
 
@@ -81,8 +77,4 @@ const playGame = () => {
     }
 };
 
-// Test functions
-// console.log('Test getComputerChoice():', getComputerChoice());
-// console.log('Test getHumanChoice():', getHumanChoice()); 
-// playRound(getHumanChoice(), getComputerChoice());
-// playGame();
+playGame();
