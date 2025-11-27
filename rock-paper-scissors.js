@@ -23,26 +23,38 @@ const playRound = (humanChoice, computerChoice) => {
 
     if (lowerCaseHumanChoice === 'rock') {
         if (computerChoice === 'Paper') {
+            computerScore++;
             console.log('Computer wins! Paper beats Rock');
         } else if (computerChoice === 'Scissors') {
+            humanScore++;
             console.log('You win! Rock beats Scissors');
         } else {
+            humanScore++;
+            computerScore++;
             console.log('Tied! Both chose Rock');
         }
     } else if (lowerCaseHumanChoice === 'paper') {
         if (computerChoice === 'Rock') {
+            humanScore++;
             console.log('You win! Paper beats Rock');
         } else if (computerChoice === 'Scissors') {
+            computerScore++;
             console.log('You lose! Scissors beat Paper');
         } else {
+            humanScore++;
+            computerScore++;
             console.log('Tied! Both chose Paper');
         }
     } else if (lowerCaseHumanChoice === 'scissors') {
         if (computerChoice === 'Rock') {
+            computerScore++;
             console.log('You lose! Rock beats Scissors');
         } else if (computerChoice === 'Paper') {
+            humanScore++;
             console.log('You win! Scissors beat Paper');
         } else {
+            humanScore++;
+            computerScore++;
             console.log('Tied! Both chose Scissors');
         }
     }
@@ -51,4 +63,4 @@ const playRound = (humanChoice, computerChoice) => {
 // Test functions
 // console.log('Test getComputerChoice():', getComputerChoice());
 // console.log('Test getHumanChoice():', getHumanChoice()); 
-// console.log('Test playRound:', playRound(getHumanChoice()), getComputerChoice());
+// playRound(getHumanChoice(), getComputerChoice());
