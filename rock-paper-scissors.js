@@ -10,5 +10,9 @@ const getComputerChoice = () => {
     }
 };
 
+// Human choice, return user input
+const getHumanChoice = () => prompt('Enter Rock, Paper or Scissors:', 'Rock');
+
 // Test functions
 console.log('Test getComputerChoice():', getComputerChoice());
+console.log('Test getHumanChoice():', getHumanChoice()); 
