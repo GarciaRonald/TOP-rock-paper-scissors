@@ -4,7 +4,7 @@
 
 ### 12/8/2025
 
-This update introduces the following updates:
+This update introduces the following concepts:
 
 - Git branches
 - DOM manipulation
