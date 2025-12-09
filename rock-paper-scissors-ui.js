@@ -5,51 +5,50 @@ const btnScissors = document.querySelector('#scissors');
 const roundNum = document.querySelector('#round span');
 const humanScore = document.querySelector('#human-score span');
 const compuScore = document.querySelector('#computer-score span');
-// const winner = document.querySelector('#results-msg span');
+const results = document.querySelector('#results-msg span');
 
 const playRound = (humanChoice, computerChoice) => {
     let lowerCaseHumanChoice = humanChoice.toLowerCase();
 
     if (lowerCaseHumanChoice === 'rock') {
         if (computerChoice === 'Paper') {
-            // computerScore++;
-            console.log('Computer wins! Paper beats Rock');
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'Computer wins! Paper beats Rock';
         } else if (computerChoice === 'Scissors') {
-            // humanScore++;
-            console.log('You win! Rock beats Scissors');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            results.textContent = 'You win! Rock beats Scissors';
         } else {
-            // humanScore++;
-            // computerScore++;
-            console.log('Tied! Both chose Rock');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'Tied! Both chose Rock';
         }
     } else if (lowerCaseHumanChoice === 'paper') {
         if (computerChoice === 'Rock') {
-            // humanScore++;
-            console.log('You win! Paper beats Rock');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            results.textContent = 'You win! Paper beats Rock';
         } else if (computerChoice === 'Scissors') {
-            // computerScore++;
-            console.log('You lose! Scissors beat Paper');
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'You lose! Scissors beat Paper';
         } else {
-            // humanScore++;
-            // computerScore++;
-            console.log('Tied! Both chose Paper');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'Tied! Both chose Paper';
         }
     } else if (lowerCaseHumanChoice === 'scissors') {
         if (computerChoice === 'Rock') {
-            // computerScore++;
-            console.log('You lose! Rock beats Scissors');
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'You lose! Rock beats Scissors';
         } else if (computerChoice === 'Paper') {
-            // humanScore++;
-            console.log('You win! Scissors beat Paper');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            results.textContent = 'You win! Scissors beat Paper';
         } else {
-            // humanScore++;
-            // computerScore++;
-            console.log('Tied! Both chose Scissors');
+            humanScore.textContent = Number(humanScore.textContent) + 1;
+            compuScore.textContent = Number(compuScore.textContent) + 1;
+            results.textContent = 'Tied! Both chose Scissors';
         }
     }
 };
 
-// Computer choice, return rock/paper/scissors based on random number
 const getComputerChoice = () => {
     let randNum = Math.floor(Math.random() * 3) + 1;
 
@@ -63,13 +62,25 @@ const getComputerChoice = () => {
 };
 
 const handleClick = e => {
+    let alertMsg = '';
+
     roundNum.textContent = Number(roundNum.textContent) + 1;
 
     if (roundNum.textContent > 5) {
-        alert('Starting a new Game!');  // NEED TO DISPLAY WINNER
+        if (Number(humanScore.textContent) > Number(compuScore.textContent)) {
+            alertMsg = 'You Win!';
+        } else if (Number(humanScore.textContent) < Number(compuScore.textContent)) {
+            alertMsg = 'Computer Wins!';
+        } else {
+            alertMsg = "It's a tie!";
+        }
+
+        alert(`${alertMsg} Restarting game...`);
+
         roundNum.textContent = 0;
         humanScore.textContent = 0;
         compuScore.textContent = 0;
+        results.textContent = '';
     } else {
         playRound(e.target.id, getComputerChoice());
     }
