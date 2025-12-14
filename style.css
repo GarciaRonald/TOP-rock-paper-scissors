@@ -70,3 +70,7 @@ button:active {
 #results-msg {
     font-size: 35px;
 }
+
+#footer {
+    text-align: center;
+}
